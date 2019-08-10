@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.kiralikotopark" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Kiralık Otopark</name>
+    <description>
+	Türkiye'nin ilk ve tek kiralık otopark ilan sitesi
+    </description>
+    <author email="info@kiralikotopark.com" href="http://kiralikotopark.com">
+	Kiralık Otopark
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-navigation href="*" />
+    <allow-navigation href="http://www.kiralikotopark.com/*" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="phonegap-version" value="cli-7.1.0" />
+    <engine name="ios" spec="^4.5.4" />
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.1" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <gap:plugin name="org.apache.cordova.device" version="0.2.3" />
+    <preference name="permissions" value="none"/>
+    <plugin name="cordova-plugin-globalization" spec="~1.11.0" />
+</widget>

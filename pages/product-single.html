@@ -1,0 +1,82 @@
+<div class="pages">
+   <div data-page="detail-restaurant" class="page navbar-fixed">
+      <div class="navbar">
+         <div class="navbar-inner">
+            <div class="left"><a href="#" class="back link"><i class="icon icon-back"></i></a></div>
+         <div class="center">İlan Detayları</div>
+            <div class="right">
+              <a href="#" class="link icon-only panel-open" data-panel="left">
+                <i class="icon f7-icons ios-only">menu</i>
+                <i class="icon material-icons md-only">menu</i>
+              </a>
+            </div>
+         </div>
+      </div>
+      <!--  -->
+      <div class="page-content">
+         <div class="row">
+            <div class="col-100">
+               <div class="restaurant-img">
+               </div>
+            </div>
+         </div>
+        <div class="row">
+            <div class="col-100">
+               <div id="preinfo">
+               </div>
+            </div>
+         </div>
+         <div class="block margin-top-15  margin-bottom-10" id="msgFavBtnDiv">
+            <a href="/inquire/" class="button button-fill color-deeporange text-extrat-thiny twins">Mesaj Gönder</a>
+            <a onclick="javascript:addFav()" class="button button-fill color-deeporange text-extrat-thiny twins">Favorilere Ekle</a>
+         </div>
+         <div class="toolbar tabbar">
+            <!-- Buttons row as tabs controller -->
+            <div class="toolbar-inner">
+               <!-- Link to 1st tab, active -->
+               <a href="#tab1" class="tab-link tab-link-active button text-extrat-thiny gray-text">Bilgiler</a>
+               <!-- Link to 2nd tab -->
+               <a href="#tab2" class="tab-link button text-extrat-thiny gray-text">Açıklama</a>
+               <!-- Link to 3rd tab -->
+               <a href="#tab3" class="tab-link button text-extrat-thiny gray-text">Konum</a>
+            </div>
+         </div>
+         <!-- Tabs, tabs wrapper -->
+         <div class="">
+            <div class="tabs">
+               <!-- Tab 1, active by default -->
+               <div id="tab1" class="tab tab-active">
+                  <div class="list media-list margin-top-15">
+                   <div id="t1">
+                     <ul>
+                        <li>
+                            <div class="item-inner">
+                             <div class="item-title-row">
+                                <div class="item-title margin-left">Makine Durumu</div>
+                                <div class="item-after link-deeporange">Satılık</div>
+                             </div>
+                          </div>
+                        </li>
+                     </ul>
+                   </div>
+                  </div>
+               </div>
+               <!-- Tab 2 -->
+               <div id="tab2" class="tab">
+                  <div class="list media-list margin-top-15">
+					<div id="t2" style="background-color:white;padding:10px;"></div>
+                  </div>
+               </div>
+               <!-- Tab 3 -->
+            	<div id="tab3" class="tab">
+                  <div class="block margin-top-15">
+    				<div id="map" style="height: 400px;width: 100%;"></div>
+                	<div id="t3"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!--  -->
+   </div>
+</div>

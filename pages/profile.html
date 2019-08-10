@@ -1,0 +1,97 @@
+<div class="page" data-name="home">
+        <!-- Top Navbar -->
+        <div class="navbar">
+          <div class="navbar-inner">
+            <div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i></a></div>
+            <div class="center">Kullanıcı Profili</div>
+            <div class="right">
+              <a href="#" class="link icon-only panel-open" data-panel="left">
+                <i class="icon f7-icons ios-only">menu</i>
+                <i class="icon material-icons md-only">menu</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Scrollable page content-->
+        <div class="page-content">
+          <!-- Get Header -->
+	      <div class="profileHeader"><div id="profileHeaderPic"></div></div>
+          <!-- Profile tabs controller -->
+		    <div class="toolbar tabbar">
+    <div class="toolbar-inner">
+      <a href="#tab-1" class="tab-link tab-link-active">Bilgilerim</a>
+      <a href="#tab-2" class="tab-link" onclick="javascript:getUserListing()">İlanlarım</a>
+      <a href="#tab-3" class="tab-link" onclick="javascript:getFavs()">Favorilerim</a>
+    </div>
+  </div>
+  <div class="tabs-animated-wrap">
+    <div class="tabs">
+    <div id="tab-1" class="page-content tab tab-active"><div class="list samosa"><div class="list-group"><ul>                     
+	<li class="item-content item-input">
+		<div class="item-inner">
+		<div class="item-title">İsim, Soyadı</div>
+		<input type="text" name="name_surname" value="" class="cFormsInput" id="inputNameSurname" placeholder="İsminiz ve soyadınız">		
+		</div>
+	</li>            
+	<li class="item-content item-input">
+		<div class="item-inner">
+		<div class="item-title">Kullanıcı Adı</div>
+		<input type="text" readonly name="username" value="" class="cFormsInput" id="inputUsername" placeholder="Username">
+		</div>
+	</li>
+	<li class="item-content item-input">
+		<div class="item-inner">
+		<div class="item-title">Adres</div>
+		<textarea name="address" cols="40" rows="3" placeholder="Posta adresiniz" class="cFormsInput" id="userAddress"></textarea>		
+		</div>
+	</li>
+	<li class="item-content item-input">
+		<div class="item-inner">
+		<div class="item-title">Hakkınızda</div>
+		<textarea name="description" cols="40" rows="3" placeholder="Kısaca kendinizi tanıtın" class="cFormsInput" id="userBio"></textarea>		
+		</div>
+	</li>
+	<li class="item-content item-input">
+		<div class="item-inner">
+		<div class="item-title">Telefon</div>
+		<input type="text" name="phone" value="053x xxx xx xx" class="cFormsInput" id="inputPhone" placeholder="Telefon numaranız">
+		</div>
+	</li>
+	<li class="item-content item-input">
+		<div class="item-inner">
+		<div class="item-title">E-posta</div>
+		<input type="text" name="mail" value="your@e-mail.com" class="cFormsInput" id="inputEmail" placeholder="E-posta" readonly>		
+		</div>
+	</li>
+	<li>
+		<div class="item-inner">
+		<p style="overflow-wrap: break-word;width:90%;margin-left:5%;font-size:0.9em;">Aşağıdaki bölümü yalnızca şifrenizi değiştirmek istiyorsanız doldurun</p>
+		</div>
+	</li>
+	<li class="item-content item-input">
+		<div class="item-inner">
+		<div class="item-title">Şifre</div>
+	<input type="password" name="password" value="" class="cFormsInput" id="inputPassword" autocomplete="off" placeholder="Şifreniz">		
+		</div>
+	</li>
+	<li class="item-content item-input">
+		<div class="item-inner">
+		<div class="item-title">Şifre Tekrarı</div>
+	<input type="password" name="password_confirm" value="" class="cFormsInput" id="inputPasswordConfirm" autocomplete="off" placeholder="Şifre tekrarı">		
+		</div>
+	</li>
+<!-- [Custom fields] -->                       
+	<div id="profileUpdateMessage"></div>
+<!-- [/Custom fields] -->
+
+	<a href="#" onclick="javascript:updateProfile();"class="formSendButton">Profili Güncelle</a>
+</ul><br />&nbsp;<br />
+<p></p>
+</div></div></div>
+    <div id="tab-2" class="page-content tab"><div class="list media-list"><div id="machine-cat-listing"></div></div></div>
+    <div id="tab-3" class="page-content tab"><div class="list media-list" id="favsContainer" style="overflow:scroll;height:300px;"></div></div></div>  
+    </div>
+ </div>
+</div>
+ </div>
+      

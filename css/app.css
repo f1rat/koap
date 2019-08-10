@@ -1,0 +1,478 @@
+@font-face {
+  font-family: 'Framework7 Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Framework7Icons-Regular.eot");
+  src: local('Framework7 Icons'),
+     local('Framework7Icons-Regular'),
+     url("../fonts/Framework7Icons-Regular.woff2") format("woff2"),
+     url("../fonts/Framework7Icons-Regular.woff") format("woff"),
+     url("../fonts/Framework7Icons-Regular.ttf") format("truetype");
+}
+
+.f7-icons, .framework7-icons {
+  font-family: 'Framework7 Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+}
+
+.tabbar {
+    position: fixed;
+    bottom: 0px;
+}
+
+.toolbar-inner {
+    padding: 0px !important;
+}
+
+.md .toolbar {
+    top : unset;
+    font-weight: bold;
+    background: #f1c40f;
+}
+
+.md .toolbar a.tab-link {
+text-transform:none;
+font-weight:bold;
+}
+
+.md .toolbar:not(.toolbar-bottom-md):not(.messagebar)~* .page-content {
+padding-top:0px;
+}
+
+.md .list {
+margin:0px;
+}
+
+a.twins {
+    width : 49%;
+    display: inline-block;
+    line-height: 37px !important;
+    height: 39px !important;
+    background-color: #f1c40f !important;
+    font-weight: bold;
+}
+
+.ios .tabbar a.tab-link-active, .ios .tabbar-labels a.tab-link-active {
+    color:white;
+    font-weight: bold;
+    background: #f1c40f;
+    border: none;
+}
+
+a.active {
+    color:white;
+    font-weight: bold;
+    background: #f1c40f;
+    border: none;
+}
+
+.ios .button {
+    border-radius: 0px !important;
+    border: none !important;
+}
+div#scontainer {
+height:125px;
+}
+#profileUpdateMessage {
+text-align:center;
+}
+
+.md .list ul:after {
+background-color:unset;
+}
+
+.md .navbar .right {
+margin-right:30px;
+}
+
+a.formSendButton {
+color: white;
+font-weight:bold;
+background-color: #F1C40F;
+padding: 15px;
+}
+div.swiper-container {
+height:100%;
+}
+img.slideShowImg {
+height:100%;
+width:100%;
+}
+img.productSlideShowImg {
+max-height: 255px;
+max-width: 100%;
+}
+.ios .block-title {
+margin:15px 15px 10px;
+}
+.ios .list {
+margin:unset;
+font-size: unset;
+}
+div#frontNewsListing {
+overflow:scroll;
+height:35%;
+}
+div.restaurant-img {
+height:315px !important;
+}
+
+.toolbar-footer{
+    margin-bottom: constant(safe-area-inset-bottom);
+    margin-bottom: env(safe-area-inset-bottom);
+}
+div.loginWarning {
+line-height: 60px;
+text-align: center;
+}
+.md .navbar {
+    background: #F1C40F;
+}
+
+img.menuavatar {
+    width: 50px;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.fading {
+    -webkit-animation-duration: 5s;
+    -webkit-animation-name: fading;
+    animation-duration: 5s;
+    animation-name: fading;
+}
+@-webkit-keyframes fading {
+    from {
+        color: red;
+    }
+    to {
+        color: black;
+    }
+}
+@keyframes fading {
+    from {
+        color: red;
+    }
+    to {
+        color: black;
+    }
+}
+div.left {
+width: 44px;
+}
+
+div.popup-page-title {
+line-height:40px;
+text-align:center;
+}
+
+div.spacer20 {
+margin-top:20px;
+}
+
+div.page-content {
+background-color:white;
+}
+
+input.leftMenuSearch {
+border: 2px dotted white;
+line-height: 40px;
+padding-left: 10px;
+margin-right: 10px;
+display:inline-block;
+width: 83%;
+color: white !important;
+}
+
+div.right {
+    width: 44px;
+}
+
+label.descriptionDetailedSearchForm {
+    float:left;
+    width: 100%;
+    padding : 10px;
+}
+
+input.detailedSearchButton {
+    line-height: 2.5em;
+    background-color: rgba(255,255,255,0);
+    color:black;
+    font-size: 16px;
+    border: 2px dotted white;
+    margin-left: 10px;
+    margin-right: -10px;
+    width: 94%;
+}
+
+select.detailedSearchSelect {
+    line-height: 30px;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    margin:10px;
+    margin-top:0;
+    border-bottom: 2px dotted white;
+    width: 93%;
+}
+
+a.detailedSearchPopupClose {
+    color:black;
+}
+
+div.detailedSearch {
+    background-color: #F1C40F;
+}
+
+div.detailedSearchNavbar {
+    background-color: #F1C40F !important;
+    border-bottom : 1px dotted black;
+}
+
+button#saveForm {
+    line-height: 2em;
+    background-color: rgba(255,255,255,0);
+    color:white;
+    border: 2px dotted white;
+}
+
+input.detailedSearchInputHalf {
+    line-height: 30px;
+    background-color: rgba(255,255,255,0);
+    margin:10px;
+    margin-top:0;
+    border: 2px dotted white;
+    width: 40%;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+}
+
+li.detailedSearchLi {
+    list-style: none;
+    margin-bottom: 10px;
+    line-height: 25px;
+    vertical-align: middle;
+    float: left;
+    width: 100%;
+}
+
+ul.detailedSearchLi {
+    padding : 20px;
+}
+
+a.searchMagnifier {
+  color:black;
+    height: 40px;  
+}
+
+.magnifierIcon {
+    vertical-align: middle;
+}
+
+div.searchStuff {
+width:100%;
+    background: #3498db;
+    padding: 5%;
+}
+div.navbar-inner {
+    background-color: #3498db;
+    color:white;
+}
+
+.ios .navbar .f7-icons {
+    color: white;
+}
+
+a.searchMagnifier .f7-icons {
+    color: white;
+}
+
+div.menucontent {
+background: #3498db;
+color:white;
+}
+
+div#userGreeting, div#loginText {
+color:black;
+text-align: center;
+}
+
+div#loginText {
+color:black;
+}
+
+div#registerMessage{
+text-align: center;
+margin-top: 10px;
+color: darkred;
+}
+
+div.profileHeader {
+height:200px;
+background-color:#F1C40F;
+vertical-align: bottom;
+}
+
+ .profileHeader {
+  position: relative;
+}
+
+div#profileHeaderPic {
+width:100%;
+position: absolute;
+bottom: 0;
+text-align:center;
+}
+
+img.profilePic {
+border-radius: 50%;
+margin-bottom: 5%;
+border: 1px solid darkgoldenrod;
+}
+
+div#searchResultsSearchDiv {
+line-height: 2.3em;
+float:left;
+width: 100%;
+}
+
+.listingitemdata {
+    padding-left: 10px;
+    width: 100%;
+}
+
+.searchResultListingTitle {
+    display: inline-block;
+    font-weight: bold;
+}
+
+.searchResultListingPrice {
+    display:inline-block;
+    float:right;
+    padding-right: 10px;
+    font-weight: bold;
+    color:darkgray
+}
+
+input.leftMenuSearch::placeholder {
+    color: #FFF !important;
+}
+
+.md .block-title {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.color-black {
+    color:black;
+}
+
+.sresultstop {
+    width: 100%;
+}
+
+input#searchResultsSearchKeyword {
+line-height: 2.3em;
+float:left;
+border: 1px dashed gray;
+width: 75%;
+margin: 2%;
+padding-left: 10px;
+}
+
+.menuicon {
+    color:black;
+    font-size: 14px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.blogheaderimage {
+    width: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.demo-card-header-pic {
+    border:none;
+    -webkit-box-shadow : none !important;
+    box-shadow: none !important;
+}
+
+.card-header:after {
+    display:none;
+}
+
+li.menuli {
+    vertical-align: middle;
+    margin-top:10px;
+    border: 1px solid white;
+    line-height: 30px;
+}
+
+ul.menul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#leftmenu {
+    margin:0;
+}
+
+.noscrollhidden {
+  overflow: hidden;
+}
+
+a.link.back {
+    color : white;
+}
+
+div#preinfo {
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: justify;
+    font-style: italic;
+    font-size: 1.3em;
+}
+
+div.restaurant-img {
+    text-align: center;
+}
+
+input#useremail, div.item-input-with-value {
+    width: 100%;
+}
+
+li.hidden {
+    display: none;
+}
+
+div.restaurant-img img {
+    width: 100%;
+}
+
+div#t2 p {
+    text-align: justify;
+}
+
+ul.listingul {
+    margin-bottom: 60px;
+}
