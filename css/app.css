@@ -75,6 +75,11 @@ a.twins {
     border: none;
 }
 
+.tab-bar {
+    border-radius: 0px !important;
+    background-color: slategray;
+}
+
 a.active {
     color:white;
     font-weight: bold;
@@ -104,9 +109,20 @@ margin-right:30px;
 a.formSendButton {
 color: white;
 font-weight:bold;
-background-color: #F1C40F;
-padding: 15px;
+background-color: #59bdff;
+float: left;
+margin-top: 10px;
+width: 100%;
+text-align: center;
+line-height: 45px;    
 }
+.inputTitle, .cFormsInput {
+    width: 100%;
+}
+.icon-back-white {
+    background-image: url(data:image/svg+xml;charset=utf-8,%3Csvg%20width%3D'12'%20height%3D'20'%20vi…1.2893215z'%20fill%3D'%23FFFFFF'%20fill-rule%3D'evenodd'%2F%3E%3C%2Fsvg%3E);
+}
+
 div.swiper-container {
 height:100%;
 }
@@ -208,6 +224,10 @@ label.descriptionDetailedSearchForm {
     float:left;
     width: 100%;
     padding : 10px;
+}
+
+#liWithNoUnderline::after {
+    display: none;
 }
 
 input.detailedSearchButton {
@@ -327,7 +347,7 @@ color: darkred;
 
 div.profileHeader {
 height:200px;
-background-color:#F1C40F;
+background-color:#59bdff;
 vertical-align: bottom;
 }
 
@@ -473,6 +493,55 @@ div#t2 p {
     text-align: justify;
 }
 
+#t2, #t3 {
+    margin-bottom: 50px;
+}
+
 ul.listingul {
     margin-bottom: 60px;
+}
+
+.ios .button.button-fill, .ios .tabbar a.tab-link-active {
+    background: #59bdff !important;
+}
+
+.icon-back {
+    background-image: url('/img/round-left-button.png') !important;    
+}
+
+.ios .icon-back {
+    width: 20px !important;
+}
+
+/* image upload specific CSS */
+
+/* Container */
+.container{
+   margin: 0 auto;
+   border: 0px solid black;
+   width: 50%;
+   height: 250px;
+   border-radius: 3px;
+   background-color: ghostwhite;
+   text-align: center;
+}
+/* Preview */
+.preview{
+   width: 100px;
+   height: 100px;
+   border: 1px solid black;
+   margin: 0 auto;
+   background: white;
+}
+
+.preview img{
+   display: none;
+}
+/* Button */
+.button{
+   border: 0px;
+   background-color: deepskyblue;
+   color: white;
+   padding: 5px 15px;
+   margin-left: 10px;
 }

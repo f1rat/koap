@@ -1,5 +1,6 @@
 routes = [
   {
+    name: 'home',
     path: '/',
     url: './index.html',
     on: {
@@ -16,7 +17,7 @@ routes = [
     {
     path: '/profile/',
     url: './pages/profile.html',
-    on: {pageInit: function (e, page) {profileLoginCheck();}
+    on: {pageInit: function (e, page) {profileLoginCheck();chooseTab(tab);}
     },
   },
     {
@@ -24,7 +25,7 @@ routes = [
       url: './pages/blog.html',
       on: {
       pageInit: function (e, page) {
-            getFullNews();
+      getFullNews();
       },
       }
     },
@@ -34,6 +35,9 @@ routes = [
       on: {
       pageInit: function (e, page) {
       logChk("add-product.html");
+      },
+      pageAfterIn: function (e, page) {
+          hundred();
       },
       }
     },

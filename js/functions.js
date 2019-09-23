@@ -1,15 +1,5 @@
-//////////////////////////////////////////////////////
-//                EDIT TO YOUR NEEDS                //
-//   												//
-// Use $title_no variable to choose the title 		//
-// field number.									//
-//var title = "3";					     			//
-// 						Edit END		    		//
-//////////////////////////////////////////////////////
-
-
 //Login check
-function logChk() {
+function logChk2() {
 console.log("checking login status...");
 if (localStorage.token == "") {
 //view.router.loadPage("login.html");
@@ -52,7 +42,7 @@ function login(){
 
     var email= $.trim($("#loginusername").val());
     var password= $.trim($("#loginuserpass").val());
-    $("#loginbutton").text("Authenticating...");
+    $("#loginbutton").text("kontrol ediliyor...");
     var url = "https://www.kiralikotopark.com/index.php/tokenapi/authenticate/?";
     var loginString = "username="+email+"&password="+password+"&key=4PcY4Dku0JkuretevfEPMnG9BGBPi";
 	localStorage.user = "";

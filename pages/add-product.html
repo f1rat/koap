@@ -41,7 +41,9 @@
                  <li class="item-content item-input">
                   <div class="item-inner">
                      <div class="item-title">Kısa İlan Metni</div>
-                      <div class="item-after"><span class="inputTitle"><textarea class="cFormsInput" type="text" id="nPShortDesc"></textarea></span></div>
+                      <div class="item-after"><span class="inputTitle"><textarea class="cFormsInput" type="text" id="nPShortDesc" maxlength="140"></textarea>
+                          <div id="nPShortDesc_feedback"></div>
+                        </span></div>
                   </div>
                </li>
                 <li class="item-content item-input">
@@ -118,7 +120,6 @@
                <ul id="secondPart"></ul>
                <ul id="lastPart">
                <li class="buttonLi">
-               <p id="submitReport"></p>
                 <a href="#" onclick="javascript:submitNewListing();"class="formSendButton">İlanı Kaydet</a>
 			   </li>
             </ul>            	
