@@ -7,6 +7,7 @@ routes = [
     pageInit: function (e, page) {
     	getLatestListings();
     	getUserData();
+        prepTheMap();
     	}
     },
   },
@@ -17,7 +18,13 @@ routes = [
     {
     path: '/profile/',
     url: './pages/profile.html',
-    on: {pageInit: function (e, page) {profileLoginCheck();chooseTab(tab);}
+    on: {pageInit: function (e, page) {profileLoginCheck();}
+    },
+  },
+    {
+    path: '/editListing/',
+    url: './pages/edit-product.html',
+    on: {pageInit: function (e, page) {getEditListing();}
     },
   },
     {

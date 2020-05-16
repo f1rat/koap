@@ -3,7 +3,7 @@
    <div class="navbar">
       <div class="navbar-inner">
          <div class="left"><a href="#" class="back link"> <i class="icon icon-back"></i></a></div>
-         <div class="center">Yeni İlan Ekle</div>
+         <div class="center">İlanı Düzenle</div>
          <div class="right">
                <a href="#" class="link icon-only panel-open"> <i class="f7-icons color-white">bars</i></a>
          </div>
@@ -99,8 +99,8 @@
                          <input type="checkbox" name="asansor" id="asansor">Asansör <br />
                          <input type="checkbox" name="elektrik" id="elektrik">Elektrik <br />
                          <input type="checkbox" name="isitma" id="isitma">Isıtma <br />
-                         <input type="checkbox" name="guvenlik" id="guvenlik">Güvenlik Görevlisi<br />
-                         <input type="checkbox" name="kamera" id="kamera">Kamera <br />
+                         <input type="checkbox" name="guvenlik" id="guvenlik">Güvenlik Personeli <br />
+                         <input type="checkbox" name="kamera" id="kamera">Güvenlik Kamerası <br />
                          <input type="checkbox" name="engelli" id="engelli">Engelli Otoparkı <br />
                          </span></div>
                   </div>
@@ -118,11 +118,35 @@
                   </div>
                </li>
                </ul>
-               <ul id="secondPart"></ul>
+               <ul id="secondPart">
+             
+    <h1 class="addImageTitle">Fotoğraflarınızı Düzenleyin</h1>
+    <div id="formContainerDiv">
+        <form id="formToSend" class="fileupload" action="" method="POST" enctype="multipart/form-data">
+            <div class="restaurant-img"></div>
+            <input type="text" id="token" name="token" value="" hidden>
+            <input type="text" name="productId" id="productId" value="" hidden>
+            <div class="upload">
+                <div class="leftUpload">
+                    <input type="file" id="fileToUpload" name="fileToUpload" multiple="" onchange="sendAway()">
+                </div>
+                <div class="rightUpload" onclick="noPhoto()">
+                    <input type="button" class="closeThumbPopup" id="closeThumbPopup">
+                </div>
+            </div>
+            <ul class="files files-list-u ui-sortable" data-toggle="modal-gallery" data-target="#modal-gallery"></ul>
+            <div id="formTableContainer">
+                <table id="thumbsTable">
+                    <tr class="thumb"></tr>
+                </table>
+            </div>
+        </form>
+    </div>
+             </ul>
                <ul id="lastPart">
                    <p id="submitReport"></p>
-               <li class="buttonLi">
-                <a href="#" onclick="javascript:submitNewListing();"class="formSendButton">İlanı Kaydet</a>
+               <li class="buttonLi" id="lemur">
+                <a href="#" onclick="javascript:saveEditedListing();"class="formSendButton">İlanı Kaydet</a>
 			   </li>
             </ul>            	
          </div>

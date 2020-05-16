@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/icons.css">
   <link rel="stylesheet" href="css/framework7-icons.css">
   <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/leaflet.css"/>
 </head>
 <body>
   <div id="app">
@@ -51,7 +52,7 @@
        <!-- Scrollable page content-->
         <div class="page-content noscrollhidden">
             <div class="searchStuff">   <input type="text" onkeypress="javascript:handle(event)" class="leftMenuSearch" placeholder="Arama" id="leftMenuSearch"><a href="#" onclick="javascript:searchMenuN();" class="searchMagnifier"><i class="f7-icons" style="vertical-align:middle;">search</i></a></div>
-            <div id="mapHolder"></div>
+            <div id="homemap"></div>
 		  <div class="block-title">Son İlanlar</div>
 		  <div class="list media-list" id="frontlisting" style="overflow:scroll;"></div> 
 		</div>  
@@ -67,6 +68,7 @@
   <!-- App routes -->
   <script src="js/routes.js"></script>
   <!-- Your custom app scripts -->
+  <script src="js/leaflet.js"></script>
   <script src="js/app.js"></script>
   <!-- Your custom app scripts -->
   <script src="js/menu.js"></script>

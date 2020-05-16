@@ -40,7 +40,7 @@ var loginPopup = app.popup.create({
   backdrop : true,
   closeByBackdropClick : false,
   animate : true,
-  content : '<div class="popup popup-login"><p><a style="margin-left:5%;margin-top:5%;"  onclick="javascript:wontLogin();">Vazgeç</a></p><div class="loginWarning"><p class="fading">Kullanıcı girişi yapmalısınız</p></div><form><div class="list margin-bottom-30 samosa"><ul class="no-border"><li><div class="item-content"><div class="input-icon item-media"><i class="flaticon-email"></i></div><div class="item-inner no-margin"><div class="item-input" style="width:100%"><input type="email" class="text-thiny" placeholder="E-posta" id="loginusername"  style="width:100%"></div></div></div></li><li><div class="item-content"><div class="input-icon item-media"><i class="flaticon-key"></i></div><div class="item-inner no-margin"><div class="item-input" style="width:100%"><input type="password" style="width:100%" class="text-thiny" placeholder="Şifre" id="loginuserpass"></div></div></div></li></ul><a href="/remember-password/" class="text-underline text-extrat-thiny gray-text" style="margin-left:5%;line-height:45px;">Şifrenizi mi unuttunuz?</a></div><div class="row btn-form-group margin-bottom-10" style="text-align:center"><a href="javascript:login();" class="button button-fill color-black text-thiny" id="loginbutton" style="height:40px;width:90%;margin-bottom:5px;margin-left: 5%;line-height: 40px;text-transform:none;">Giriş Yap</a><a href="#" class="button button-fill color-facebook text-thiny" style="height:40px;width:90%;margin-left: 5%;line-height: 40px; text-transform:none;">Facebook</a></div><div class="text-center margin-bottom-15" style=" margin-top: 3%;"><a href="#" onclick="javascript:popupRegister()" class="text-underline text-extrat-thiny gray-text" style="width:90%;margin-left:5%;">Hesabınız yok ise hemen kayıt olabilirsiniz</a></div></form></div>',
+  content : '<div class="popup popup-login"><p><a style="margin-left:5%;margin-top:5%;"  onclick="javascript:wontLogin();">Vazgeç</a></p><div class="loginWarning"><p class="fading">Kullanıcı girişi yapmalısınız</p></div><form><div class="list margin-bottom-30 samosa"><ul class="no-border"><li><div class="item-content"><div class="input-icon item-media"><i class="flaticon-email"></i></div><div class="item-inner no-margin"><div class="item-input" style="width:100%"><input type="email" class="text-thiny" placeholder="E-posta" id="loginusername"  style="width:100%"></div></div></div></li><li><div class="item-content"><div class="input-icon item-media"><i class="flaticon-key"></i></div><div class="item-inner no-margin"><div class="item-input" style="width:100%"><input type="password" style="width:100%" class="text-thiny" placeholder="Şifre" id="loginuserpass"></div></div></div></li></ul><a href="/remember-password/" class="text-underline text-extrat-thiny gray-text" style="margin-left:5%;line-height:45px;">Şifrenizi mi unuttunuz?</a></div><div class="row btn-form-group margin-bottom-10" style="text-align:center"><a href="javascript:login();" class="button button-fill color-black text-thiny" id="loginbutton" style="height:50px;width:90%;margin-bottom:5px;margin-left: 5%;line-height: 40px;text-transform:none;">Giriş Yap</a><a href="#" class="button button-fill color-facebook text-thiny" style="height:50px;width:90%;margin-left: 5%;line-height: 40px; text-transform:none;">Facebook</a></div><div class="text-center margin-bottom-15" style=" margin-top: 3%;"><a href="#" onclick="javascript:popupRegister()" class="text-underline text-extrat-thiny gray-text" style="width:90%;margin-left:5%;">Hesabınız yok ise hemen kayıt olabilirsiniz</a></div></form></div>',
   // Events
   on: {
     open: function (popup) {
@@ -56,34 +56,61 @@ var loginPopup = app.popup.create({
 //No photo upload
 function noPhoto () {
     imagePopup.close();
-    app.router.navigate("/");
+    app.router.navigate("/profile/");
 }
 
 //Image upload popup
 var imagePopup = app.popup.create({
     
-    //Old Content 
-    
-    /*
-  content: '<div class="popup"><div class="block"><p>İlanınız eklendi.</p><p>Fotoğraf eklemek ister misiniz?</p><input type="file"  name="files[]h" id="new-image" multiple><a onclick="javascript:uploadFiles(153)"href="#" class="button upload-image">Yükle</a><p><input id="file_lectura" readonly type="text" accept="image/*;capture=camera" placeholder=""/> </p><p id="vario"></p><p><br /></p><a href="#" onclick="javascript:submitNewListing('+localStorage.getItem("newListingId")+');"class="formImageSendButton">İlanı Kaydet</a><a onclick="javascript:noPhoto();">Fotoğraf eklemek istemiyorum</a></div></div>',
-    */
-    
-    //New Content https://makitweb.com/how-to-upload-image-file-using-ajax-and-jquery/
-    content: '<div class="popup"><div class="container"><form method="post" action="" enctype="multipart/form-data" id="myform"><div class="preview"><img src="" id="img" width="100" height="100"></div>     <div >          <input type="file" id="file" name="file" />            <input type="button" class="button" value="Upload" id="but_upload">        </div>    </form></div><a onclick="javascript:noPhoto();">Fotoğraf eklemek istemiyorum</a></div></div>',
-    
-    
+    content: '<div class="popup"><h1 class="addImageTitle">İlanınıza Fotoğraf Ekleyin</h1><div id="formContainerDiv"><form id="formToSend" class="fileupload" action="" method="POST" enctype="multipart/form-data"><input type="text" id="token" name="token" value="" hidden><input type="text" name="productId" id="productId" value="" hidden><div class="upload"><div class="leftUpload"><input type="file" id="fileToUpload" name="fileToUpload" multiple="" onchange="sendAway()"></div><div class="rightUpload"  onclick="noPhoto()"><input type="button" class="closeThumbPopup" id="closeThumbPopup"></div></div><ul class="files files-list-u ui-sortable" data-toggle="modal-gallery" data-target="#modal-gallery"></ul><div id="formTableContainer"><table id="thumbsTable"><tr class="thumb"></tr></table></div></form></div></div>',
     
   // Events
   on: {
     open: function (popup) {
-        alert(localStorage.getItem("newListingId"));
-      console.log('Popup open');
+    $('#token').val(localStorage.getItem("token"));
+    $('#productId').val(localStorage.getItem("newListingId"));
+    $('tr#thumbsTable').html();
+    console.log('Popup open');
     },
     opened: function (popup) {
       console.log('Popup opened');
     },
   }
 });
+
+function sendAway(e){
+    event.preventDefault();
+    var filename = $('input[type=file]').val().split('\\').pop();      
+    filename = filename.split('.').slice(0, -1).join('.');  
+       $('tr.thumb').append('<td class="thumb" id="'+filename+'"><img src="img/upload-loading.gif" class="thumbLoading"></td>');
+
+                            
+       var fd = new FormData();
+       var files = $('#fileToUpload')[0].files[0];
+        fd.append('fileToUpload',files);
+        fd.append('productId', $('input#productId').val());
+        fd.append('token',$('input#token').val());
+        fd.append('submit','true');
+       
+    var url = "https://kiralikotopark.com/uploadster.php";                         
+    $.ajax({
+        url: url, // point to server-side PHP script 
+        type: 'POST',
+        data: fd,
+        dataType: 'text',
+        contentType: false,
+        cache: false,
+        processData:false,    
+        success: function(php_script_response){
+            var tempProdId = $("input#productId").val();
+            $('td#'+filename).html('<span class="notify-badge" onclick="Thumb(\''+php_script_response+'\',\''+tempProdId+'\')">X</span><img class="uploadPageThumb" src="https://kiralikotopark.com/files/thumbnail/'+php_script_response+'" alt="'+php_script_response+'">');
+            var newResponse = php_script_response.split('.').slice(0, -1).join('.'); 
+            $('td#'+filename).attr("id", newResponse);
+            $("td#"+filename+" img:last-child").remove();
+        }
+     });
+}
+                
 // Events also can be assigned on instance later
 imagePopup.on('close', function (popup) {
   console.log('Popup close');
@@ -91,13 +118,10 @@ imagePopup.on('close', function (popup) {
 imagePopup.on('closed', function (popup) {
   console.log('Popup closed');
 });
-
 // Open dynamic popup
 $$('.dynamic-popup').on('click', function () {
   imagePopup.open();
 });
-
-
 
 var detailedSearch = app.popup.create({
   backdrop : true,
@@ -112,6 +136,23 @@ var detailedSearch = app.popup.create({
     },
   }
 });
+
+function Thumb(a,b) {
+    var c = a.split('.').slice(0, -1).join('.');
+    $("td#"+c).hide();
+    var url = "https://kiralikotopark.com/deletster.php";                         
+    $.ajax({
+        url: url, // point to server-side PHP script 
+        type: 'POST',
+        data: {productId : b, imageToDel : a},
+        dataType: 'json',   
+        success: function(response){
+            alert(response);
+        }
+     });
+    
+    
+}
 
 //Short Text Counter
 function hundred() {
@@ -188,6 +229,7 @@ function login(){
         success: function(data){
             if(data.message == "Results available") {
             $("#loginbutton").text("Giriş başarılı");
+            getUserMiniAvatar();
             localStorage.token = data.token;
             localStorage.email = email;
             localStorage.user = data.user_data.name_surname;
@@ -206,8 +248,7 @@ function login(){
         }        
     });
 }    
-      
-      
+         
 //Forgot Password
 function forgotPass(){
 	var email = $.trim($("#inputMail").val());
@@ -387,7 +428,7 @@ localStorage.removeItem("newsBody");
 
 //Get last 10 listing
 function getLatestListings(){
-    var url = "https://kiralikotopark.com/index.php/api/json/tr/10/";
+    var url = "https://kiralikotopark.com/index.php/api/json/tr/48/";
 	$.ajax({
         type: "POST",
         crossDomain: true, 
@@ -399,12 +440,15 @@ function getLatestListings(){
         var collector = "";
         $("#frontlisting").html("");
         for (i = 0; i < resultcount; i++) { 
-        if (data.results[i].listing.image_filename == null){
+
+        if (data.results[i].listing.image_filename == null || data.results[i].listing.image_filename == ""){
         data.results[i].listing.image_filename = "no_image.jpg";
         }
-        collector += '<li><a onclick="passProductID('+data.results[i].listing.id+');" href="#" class="item-link item-content"><div class="item-media"><img src="https://kiralikotopark.com/files/'+data.results[i].listing.image_filename+'" width="80"></div><div class="item-inner"><div class="item-title-row"><div class="item-title">'+data.results[i].listing.json_object.field_10+'</div><div class="item-after"></div></div><div class="item-subtitle">'+data.results[i].listing.json_object.field_4+'</div><div class="item-text">'+data.results[i].listing.field_37_int+' TL / ay</div></div></a></li>';
+        collector += '<li><a onclick="passProductID('+data.results[i].listing.id+');" href="#" class="item-link item-content"><div class="item-media"><img src="https://kiralikotopark.com/files/thumbnail/'+data.results[i].listing.image_filename+'" width="80"></div><div class="item-inner"><div class="item-title-row"><div class="item-title">'+data.results[i].listing.json_object.field_10+'</div><div class="item-after"></div></div><div class="item-subtitle">'+data.results[i].listing.json_object.field_4+'</div><div class="item-text">'+data.results[i].listing.field_37_int+' TL / ay</div></div></a></li>';
         }
-        $("#frontlisting").append('<ul>'+collector+'</ul>');        
+        var height = $(document).height();
+        var mHeight = height - 160;
+        $("#frontlisting").append('<ul style="height:'+mHeight+'px;overflow:scroll">'+collector+'</ul>');              
         }      
     });
 }
@@ -460,7 +504,7 @@ var lang = "2";
 		
 		//Display property images in carousel
 		var images = data[0].image_repository;
-        if (images == null) {
+        if (images.length < 4) {
         $(".restaurant-img").html("<img src='https://www.kiralikotopark.com/files/no_image.jpg' alt='fotoğrafsız' />");
         } 
             else {
@@ -521,9 +565,13 @@ var lang = "2";
 		propgeninfo += '<li><div class="item-inner"><div class="item-title-row"><div class="item-title margin-left">'+w[six]+'</div><div class="item-after link-deeporange">'+arry[six]+'</div></div></div></li>'; }
             
             
-        var seven = w.indexOf("Güvenlik");   
+        var seven = w.indexOf("Güvenlik Personeli");   
             if(w[seven] != undefined){
 		propgeninfo += '<li><div class="item-inner"><div class="item-title-row"><div class="item-title margin-left">'+w[seven]+'</div><div class="item-after link-deeporange">Evet</div></div></div></li>'; }
+            
+        var sevenOne = w.indexOf("Güvenlik Kamerası");   
+            if(w[sevenOne] != undefined){
+		propgeninfo += '<li><div class="item-inner"><div class="item-title-row"><div class="item-title margin-left">'+w[sevenOne]+'</div><div class="item-after link-deeporange">Evet</div></div></div></li>'; }
             
             
         var eight = w.indexOf("Engelli otoparkı");   
@@ -638,7 +686,7 @@ function getAllMachines(){
         var price = details[37];
         }
         var picUrl = data[i].image_filename;
-        if (picUrl == null) {
+        if (picUrl.length < 4) {
             picUrl = "no-image.jpg";
         }
         collector += '<li><a onclick="passProductID('+data[i].property_id+');" href="#" class="item-link item-content"><div class="item-media"><img src="https://kiralikotopark.com/files/'+picUrl+'" width="80"></div><div class="item-inner"><div class="item-title-row"><div class="item-title">'+details[10]+'</div><div class="item-after"></div></div><div class="item-subtitle">'+details[83]+','+details[81]+' model</div><div class="item-text">'+price+' TL</div></div></a></li>';
@@ -668,13 +716,20 @@ var vehicleSize = $("#vehicleSize :selected").val();
 var asansor = $("#asansor").val();
 var elektrik = $("#elektrik").val();
 var isitma = $("#isitma").val();
+var kamera = $("#kamera").val();
 var guvenlik = $("#guvenlik").val();
 var engelli = $("#engelli").val();
 var aylikKira = $("input#aylikKira").val();
 var yillikKira = $("input#yillikKira").val();
 var userToken = localStorage.token;
-
-var url = "https://www.kiralikotopark.com/index.php/tokenapi/submission/?token="+userToken+"&lang_code=tr&input_address="+nPAddress+"&input_title="+nPTitle+"&input_description="+nPShortDesc+"&input_79="+nPCat+"&input_4=Kiralık&input_17="+nPLongDesc+"&input_54="+listingOwner+"&input_2="+nPType+"&input_106="+door+"&input_108="+vehicleCapacity+"&input_30="+asansor+"&input_3="+vehicleSize+"&input_11="+elektrik+"&input_33="+isitma+"&input_28="+guvenlik+"&input_29="+engelli+"&input_37="+aylikKira+"&input_55="+yillikKira+"";
+    
+localStorage.setItem('tempApddress', nPAddress);
+localStorage.setItem('tempTitle', nPTitle);
+localStorage.setItem('tempI4', 'Kiralık');
+localStorage.setItem('tempDesc', nPShortDesc);
+localStorage.setItem('tempI11', elektrik);
+    
+var url = "https://www.kiralikotopark.com/index.php/tokenapi/submission/?token="+userToken+"&lang_code=tr&input_address="+nPAddress+"&input_title="+nPTitle+"&input_description="+nPShortDesc+"&input_79="+nPCat+"&input_4=Kiralık&input_17="+nPLongDesc+"&input_54="+listingOwner+"&input_2="+nPType+"&input_106="+door+"&input_108="+vehicleCapacity+"&input_30="+asansor+"&input_111="+kamera+"&input_3="+vehicleSize+"&input_11="+elektrik+"&input_33="+isitma+"&input_28="+guvenlik+"&input_29="+engelli+"&input_37="+aylikKira+"&input_55="+yillikKira+"";
 
     	$.ajax({
         type: "post",
@@ -684,17 +739,17 @@ var url = "https://www.kiralikotopark.com/index.php/tokenapi/submission/?token="
         url: url,
         async: false,
         success: function(data){
-            alert(data.message);
+            //alert(data.message);
         if (data.message == '"Please populate all fields!"') {
             $("p#submitReport").append("<p>Lütfen tüm alanları, eksiksiz doldurunuz</p>");
             return 0;
-        }
+        } else {
+            localStorage.removeItem("newListingId");
             localStorage.setItem('newListingId', data.estate.id);
+        }
         if (data.token_available == false) {
 		$("p#submitReport").html("Lütfen önce kullanıcı girişi yapın");
-        } else {
-		$("p#submitReport").append("Başarıyla giriş yaptınız");        
-        }
+        } 
         if (data.success == false) {
    		$("p#submitReport").append(data.message);        
         } 
@@ -705,24 +760,6 @@ var url = "https://www.kiralikotopark.com/index.php/tokenapi/submission/?token="
         }
 		}
 		});
-
-$(document).on('change', '#new-image', function() 
-{
-    //focus
-    $('#file_lectura').focus();
-
-    //show value file
-    $('#file_lectura').val(this.value);
-});
-
-}
-
-//File upload function - INCOMPLETE
-function uploadFiles(f) {
-    alert(f);
-	var x = document.getElementById("new-image").files;
-	var u = "&property_id="+f+"";
-	submitNewListing(u);
 }
 
 //Menu Greeting Function
@@ -774,11 +811,12 @@ var path = (location.pathname);
         success: function(data){
 		var boolchecker = data.token_available;
 		if (boolchecker === true) {
-		if (typeof data.results.image_user_filename !== 'undefined' && data.results.image_user_filename !== null) {
-		$('#profileHeaderPic').html('<img class="profilePic" src="https://kiralikotopark.com/files/'+data.results.image_user_filename+'" alt="'+data.results.name_surname+'" width="120" height="120">');}
+		if (typeof data.results.image_user_filename !== 'undefined' && data.results.image_user_filename !== null && data.results.image_user_filename !== "")   {
+    	$('#profileHeaderPic').html('<img class="profilePic" src="https://kiralikotopark.com/files/'+data.results.image_user_filename+'" alt="'+data.results.name_surname+'" width="120" height="120">');}
 		else {
-		$('#profileHeaderPic').html('<img class="profilePic" src="../img/default-avatar.png" alt="user" width="120" height="120">');}
-		$('#inputNameSurname').val(data.results.name_surname);
+		$('#profileHeaderPic').html('<img class="profilePic" src="../img/default-avatar.png" alt="user" width="120" height="120">');
+        }
+        $('#inputNameSurname').val(data.results.name_surname);
 		$('#inputUsername').val(data.results.username);
 		$('#userAddress').val(data.results.address);
 		$('#userBio').val(data.results.description);
@@ -800,7 +838,8 @@ var path = (location.pathname);
 
 //Get user avatar for menu
 function getUserMiniAvatar() {
-if (localStorage.email != undefined) {
+    //alert("getting mini");
+if (localStorage.email !== undefined) {
 var url = "https://www.kiralikotopark.com/mobile-functions.php?action=getUserMiniAvatar&user="+localStorage.email;
 var userminiavatar;
     $.ajax({
@@ -810,7 +849,8 @@ var userminiavatar;
         cache: false,
         url: url,
         success: function(data){
-		if(data.image_user_filename == null) {
+            alert("got mini av");
+		if(data.image_user_filename == "") {
 		$("#miniavatardiv").html('<img class="menuavatar" src="../img/default-avatar.png" alt="Profil Fotoğrafı" width="80" height="80">');
         } else {
         $("#miniavatardiv").html('<img class="menuavatar" src="https://kiralikotopark.com/files/thumbnail/'+data[0].image_user_filename+'" alt="Profil Fotoğrafı" width="80" height="80">');
@@ -954,7 +994,7 @@ var priceMax = $('#fiyatMax').val();
         var price = details[37];
         }
         var imgUrl = data[i].image_filename;
-        if (imgUrl == null) {
+        if (imgUrl == null || imgUrl == "") {
             imgUrl = "strict_cache/380x250no_image.jpg";
         }
         collector += '<li class="searchResultsListing"><a onclick="passProductID('+data[i].property_id+');" href="#" class="item-link item-content"><div class="item-media"><img src="https://kiralikotopark.com/files/'+imgUrl+'" width="80"></div><div class="item-data listingitemdata"><div class="item-title-detail searchResultListingTitle">'+details[10]+'</div><div class="searchResultListingPrice">'+price+' TL</div><div class="">'+details[83]+','+details[81]+' model</div></div></a></li>';
@@ -982,7 +1022,6 @@ fetch('https://kiralikotopark.com/index.php/property/'+ whichProduct +'/tr/')
         // Parse the text
         var doc = parser.parseFromString(html, "text/html");
         // You can now even select part of that html as you would in the regular DOM 
-        // Example:
         var docArticle = doc.querySelector('#form').innerHTML;
         
         $('#inqContent').append(docArticle);
@@ -993,8 +1032,7 @@ fetch('https://kiralikotopark.com/index.php/property/'+ whichProduct +'/tr/')
         $("textarea#message").css({"height":"6em","font-size":"16px","margin":"5%","border-bottom":"1px dotted black","padding-left":"10px","width":"90%"});
         $('img').css("margin-left","15%");
         $('button').css({"height":"3em","width":"60%","margin-left":"20%","margin-top":"5%","background-color":"#f1c40f","color":"white","font-weight":"bold","font-size":"1.1em"});
-//        $('#inqContent').append("<input type='button' value='hele' onclick='javascript:sendInquiryForm()'/>");
-        sendInquiryForm();
+//       $('#inqContent').append("<input type='button' value='hele' onclick='javascript:sendInquiryForm()'/>");
     })
     .catch(function(err) {  
         console.log('Failed to fetch page: ', err);  
@@ -1003,42 +1041,93 @@ fetch('https://kiralikotopark.com/index.php/property/'+ whichProduct +'/tr/')
 }
 
 //Send Inquiry Form
-function sendInquiryForm() {
-    var selim = document.getElementById("inqForm");
-    selim.onsubmit = function (){
-    event.preventDefault();
+    $(document).on('submit','form.property-form',function(){ 
+    var url = $('form.property-form').attr('action')+'?';
+    var data = $(this).serialize();
+    var namecheck = $('#firstname').val();
+    var mailcheck = $('#email').val();
+    var telcheck = $('#phone').val();        
+    var messagecheck = $('#message').val();        
+    var vericheck = $('.captcha').val();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    var emailaddressVal = mailcheck;
+        
+        
+    if (namecheck.length < 2) {
+        $('#messageDisplay').css({'color':'red','font-size':'20px','text-align':'center'});
+              $('#messageDisplay').html('<p>Lütfen isminizi yazın</p>');
+        return false;
+     } else if (mailcheck.length < 2) {
+        $('#messageDisplay').css({'color':'red','font-size':'20px','text-align':'center'});
+              $('#messageDisplay').html('<p>Lütfen e-postanızı yazın</p>');
+        return false;
+    } else if(!emailReg.test(emailaddressVal)) {
+        $('#messageDisplay').css({'color':'red','font-size':'20px','text-align':'center'});
+              $('#messageDisplay').html('<p>Lütfen geçerli bir e-posta adresi yazın</p>');
+        return false;
+    }
+      else if (telcheck.length < 2) {
+        $('#messageDisplay').css({'color':'red','font-size':'20px','text-align':'center'});
+              $('#messageDisplay').html('<p>Lütfen telefon numaranızı yazın</p>');
+        return false;
+    } else if (messagecheck.length < 2) {
+        $('#messageDisplay').css({'color':'red','font-size':'20px','text-align':'center'});
+              $('#messageDisplay').html('<p>Lütfen mesajınızı yazın</p>');
+        return false;
+    } else if (vericheck.length < 5) {
+        $('#messageDisplay').css({'color':'red','font-size':'20px','text-align':'center'});
+              $('#messageDisplay').html('<p>Lütfen doğrulama kodunu girin</p>');
+        return false;
+    }else {
+    
+        
+        console.log("yolluyorum artık");
     $.ajax({
-      url: $('#inqForm').attr('action'),
+      url: url,
       type: 'POST',
-      data : $('#inqForm').serialize(),
+      data : data,
       success: function(data){
         var parser = new DOMParser();
         // Parse the text
         var doc = parser.parseFromString(data, "text/html");
-        var docArti = doc.querySelector('.alert');
-          if (docArti == null) {
-              $('#messageDisplay').css({'color':'green','font-size':'20px','text-align':'center'});
+        var docArti = doc.getElementsByClassName('alert-danger');
+
+        var hami = new XMLSerializer().serializeToString(doc);
+        var n = hami.search("Doğrulama");
+
+          
+          if (n == -1) {              
+            $('#messageDisplay').css({'color':'green','font-size':'20px','text-align':'center'});
               $('#messageDisplay').html('<p>Mesajınız İletildi.</p>');
               $('#firstname').val('');
+              $('#firstname').attr("disabled", true);
               $('#email').val('');
+              $('#email').attr("disabled", true);
               $('#phone').val('');
+              $('#phone').attr("disabled", true);
               $('#datetimepicker1').val('');
+              $('#datetimepicker1').attr("disabled", true);
               $('#datetimepicker2').val('');
+              $('#datetimepicker2').attr("disabled", true);
               $('#address').val('');
+              $('#address').attr("disabled", true);
               $('#message').val('');
+              $('#message').attr("disabled", true);
               $('.captcha').val('');
+              $('.captcha').attr("disabled", true);
+              $('form.property-form button').attr("disabled", true);
           } else {
-          var docArticle = docArti.innerHTML;
-          $('#messageDisplay').html(docArticle);
+              $('#messageDisplay').css({'color':'red','font-size':'20px','text-align':'center'});
+              $('#messageDisplay').html('<p>Doğrulama kodu hatalı</p>');
+              return false;
+              
               }
       }
     });
+        }
     return false;
 
- };   
-//    localStorage.removeItem("localStorage.productID");
-
-};
+ });
 
 //List Favorites
 function getFavs(){
@@ -1061,7 +1150,7 @@ function getFavs(){
         if (data.results[i].listing.image_filename == null){
         data.results[i].listing.image_filename = "no_image.jpg";
         }
-        collector += '<li><a onclick="passProductID('+data.results[i].listing.id+');" href="#" class="item-link item-content"><div class="item-media"><img src="https://kiralikotopark.com/files/'+data.results[i].listing.image_filename+'" width="80"></div><div class="item-inner"><div class="item-title-row"><div class="item-title">'+data.results[i].listing.json_object.field_10+'</div><div class="item-after"></div></div><div class="item-subtitle">'+data.results[i].listing.json_object.field_83+', '+data.results[i].listing.json_object.field_81+' model</div><div class="item-text">'+data.results[i].listing.field_36_int+' TL</div></div></a></li>';
+        collector += '<li><a onclick="passProductID('+data.results[i].listing.id+');" href="#" class="item-link item-content"><div class="item-media"><img src="https://kiralikotopark.com/files/'+data.results[i].listing.image_filename+'" width="80"></div><div class="item-inner"><div class="item-title-row"><div class="item-title">'+data.results[i].listing.json_object.field_10+'</div><div class="item-after"></div></div><div class="item-text">'+data.results[i].listing.field_37_int+' TL</div></div></a></li>';
         }
         $("#favsContainer").html('<ul>'+collector+'</ul>');        
                 } else {
@@ -1115,6 +1204,8 @@ function remFav(w){
 } 
 
 function getFaqs() {
+    
+    /*
 var collector = "";
 var url = "https://www.kiralikotopark.com/mobile-functions.php?action=getFaqs";
 $.ajax({
@@ -1131,6 +1222,9 @@ $.ajax({
         $('#faqscarrier').html(collector);
         }
 });
+*/
+    
+    
 $('.accordion-item-toggle').css({
     "padding": "0px 15px",
     "font-size": "17px",
@@ -1161,6 +1255,7 @@ $('.accordion-item-toggle span').css({
     "margin-left": "35px"});
 $('.accordion-item-content p').css({
 	"display": "inline-block",
+    "max-width": "100%",
     "font-size":"1.2em",
     "text-align":"justify"});
 }
@@ -1213,12 +1308,12 @@ function getUserListing() {
         success: function(data){
         console.log(data);
             if (data == 'no-result') {
-                collector = "<p>Henüz ilanınız yok</p>";
+                collector = "<p id='noLisintgyet'>Henüz ilanınız yok</p>";
             } else {
-            
-        collector = "<ul>";
+        collector = '<ul id="userListingUl"><li class="editListings"><a class="editLink" onclick="editSelectedListing();"><img class="editMenuButton" src="img/edit-interface-symbol.png"></a><a class="delLink" onclick="deleteSelectedListing();"><img src="img/delete-button.png" class="deleteMenuButton"></a></li>';
         for(var i=0;i<data.length;i++){
         var details = data[i].json_object;
+        var monthPrice = data[i].field_37_int;
         details = details.replace(/field_/g,'');
         details = $.parseJSON(details);	
         if (details[36] != "") {
@@ -1227,10 +1322,10 @@ function getUserListing() {
         var price = details[37];
         }
         var picUrl = data[i].image_filename;
-        if (picUrl == null) {
+        if (!picUrl) {
             picUrl = "no_image.jpg";
         }
-        collector += '<li><a onclick="passProductID('+data[i].property_id+');" href="#" class="item-link item-content"><div class="item-media"><img src="https://kiralikotopark.com/files/'+picUrl+'" width="80"></div><div class="item-inner"><div class="item-title-row"><div class="item-title">'+details[10]+'</div><div class="item-after"></div></div><div class="item-subtitle">'+details[83]+','+details[81]+' model</div><div class="item-text">'+price+' TL</div></div></a></li>';
+        collector += '<li class="usersOwnListing" id="userList'+data[i].property_id+'"><a onclick="editRSelectedListing('+data[i].property_id+');" href="#" class="editButton"><img src="img/edit-interface-symbol.png"></a><a onclick="deleteRSelectedListing('+data[i].property_id+');" href="#" class="delButton"><img src="img/delete-button.png"></a><a onclick="passProductID('+data[i].property_id+');" href="#" class="item-link item-content"><div class="item-media"><img src="https://kiralikotopark.com/files/thumbnail/'+picUrl+'" width="80"></div><div class="item-inner"><div class="item-title-row"><div class="item-title">'+details[10]+'</div></div><div class="item-text">'+monthPrice+' TL</div></div></a></li>';
         }
         collector += '</ul>';
         }
@@ -1238,6 +1333,321 @@ function getUserListing() {
          }   
 });
 }
+
+function editSelectedListing(j) {
+if ($("a.editButton img").css("display").toLowerCase() == "inline-block") {
+    $("a.editButton img").css("display","none");
+    return 0;
+}
+$("a.delButton img").css("display","none");    
+$("li.usersOwnListing a.item-link").css("width","calc(100% - 20px)");
+$("li.usersOwnListing a.item-link").css("margin-right","-20px");
+$("li.usersOwnListing a.item-link").css("float","left");
+$("a.editButton img").css("display","inline-block");
+}
+
+function deleteSelectedListing(j) {
+if ($("a.delButton img").is(":visible")) {
+    $("a.delButton img").css("display","none");
+    return 0;    
+}
+$("a.editButton img").css("display","none");    
+$("li.usersOwnListing a.item-link").css("width","calc(100% - 20px)");
+$("li.usersOwnListing a.item-link").css("margin-right","-20px");
+$("li.usersOwnListing a.item-link").css("float","left");
+$("a.delButton img").css("display","inline-block");
+}
+
+function editRSelectedListing(g) {
+    localStorage.setItem("listingToEdit", g);
+    app.router.navigate("/editListing/");
+}
+
+function deleteRSelectedListing(w) {
+    logChk();
+    app.dialog.confirm('Bu işlem geri alınamaz!', 'Silmek İstediğinize Emin Misiniz?',
+       function () {
+        
+        var loginString = "token="+localStorage.token+"&property_id="+w;
+        var url = "https://www.kiralikotopark.com/index.php/tokenapi/listings/DELETE/?"+loginString;
+        $.ajax({
+        type: "GET",
+        dataType : "json",
+        crossDomain: true, 
+        cache: false,
+        url: url,
+        data: loginString,
+        async: false,
+        success: function(data){
+            $("li#userList"+w).css("display","none");
+            $("a.delButton img").css("display","none");
+            app.dialog.alert('İlan silindi.');
+        }        
+    });           
+               },
+               function () {
+                  return 0;
+               }
+            );    
+}
+
+function getEditListing() {
+        var fr = localStorage.getItem("listingToEdit");
+        var url = "https://www.kiralikotopark.com/mobile-functions.php?action=getSinglePropertyData&propertyID="+fr+"&language=2";
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        crossDomain: true, 
+        cache: false,
+        url: url,
+        async: false,
+        success: function(data){ 
+
+        var details = data[0]["json_object"];
+        details = details.replace(/field_/g,'');
+        details = $.parseJSON(details);	
+            
+        var arry = [];
+		var o = "";
+		for (l=0;l<data[1].length;l++) {
+			o = data[1][l];
+			arry.push(details[o]);
+		}
+                
+		var w = [];
+		for (var q = 0; q<arry.length; q++) {
+		w.push(data[2][q].option);
+		}
+		
+		var exclude = [];
+		for (i = 0; i<data[3].length;i++) {
+		if (data[5][i]) {
+		} else {
+		exclude.push(i);
+		}
+		}
+				
+		var coordinates = data[0].gps;
+		coordinates = coordinates.split(',');
+		
+		//Display property images in carousel
+		var images = data[0].image_repository;
+        if (images.length < 4) {
+          $("tr.thumb").html("<td class='thumb'><img src='https://www.kiralikotopark.com/files/no_image.jpg' alt='fotoğrafsız' /></td>");
+        } 
+            else {
+		images = images.substring(1, images.length - 1);
+		images = images.replace(/"/g,'');
+		images = images.split(',');
+		//var collector = "<div data-pagination='{\"el\": \".swiper-pagination\"}' data-space-between=\"0\" class=\"swiper-container swiper-init loop\"><div class=\"swiper-wrapper\" id=\"mainsliderhost\">";
+		var i = 0;
+		$.each(images, function(){
+            
+            
+            
+         
+            
+            
+       var filename = images[i].split('.').slice(0, -1).join('.');  
+       $('tr.thumb').append('<td class="thumb" id="'+filename+'"><img src="img/upload-loading.gif" class="thumbLoading"></td>');
+
+        
+        $('td#'+filename).html('<span class="notify-badge" onclick="Thumb(\''+images[i]+'\',\''+fr+'\')">X</span><img class="uploadPageThumb" src="https://kiralikotopark.com/files/thumbnail/'+images[i]+'" alt="'+images[i]+'">');
+            
+            
+            
+            
+            
+            
+		//collector += "<div class=\"swiper-slide\"><img src=\"https://www.kiralikotopark.com/files/"+images[i]+"\" class=\"productSlideShowImg\"></div>";
+		i=i+1;
+		});
+		//collector += "</div><div class=\"swiper-pagination\"></div></div>";
+		//$(".restaurant-img").html(collector);
+        }
+		
+            
+            
+        var reArray = [];
+		//Display property general info
+        var preinfo = '';
+		var propgeninfo = '<ul class="listingul"><li><div class="item-inner"><div class="item-title-row"><div class="item-title margin-left">İlan Numarası</div><div class="item-after link-deeporange">'+fr+'</div></div></div></li>';
+		var longdescription = "<p style='text-align:justify !important'>";
+         
+            
+            
+        if (exclude.includes(r)) {} else {
+            
+            
+        /*    
+        var one = w.indexOf("İlan Tipi");
+            if(w[one] != undefined){
+		propgeninfo += '<li><div class="item-inner"><div class="item-title-row"><div class="item-title margin-left">'+w[one]+'</div><div class="item-after link-deeporange">'+arry[one]+'</div></div></div></li>'; }
+        */
+        $('#productId').val(fr);    
+        $('#newProductAddress').val(data[0]["address"]);
+        $('#newProductTitle').val(data[0]["json_data"]);
+        $('input#newProductTitle.cFormsInput').val(arry[4]);
+        $('li#lemur').html('<a href="#" onclick="javascript:saveEditedListing('+fr+');"class="formSendButton">İlanı Kaydet</a>');
+        
+        var two = w.indexOf("İlan Sahibi");   
+            if(w[two] != undefined){
+                $("select#listingOwner option[value='"+arry[two]+"']").attr("selected","selected");
+            }
+        
+        var three = w.indexOf("Otopark Tipi");   
+            if(w[three] != undefined){
+                $("select#nPType option[value='"+arry[three]+"']").attr("selected","selected");
+       }
+        
+        
+        var four = w.indexOf("Park Alanı Boyutu");   
+            if(w[four] != undefined){
+		 $("select#vehicleSize option[value='"+arry[four]+"']").attr("selected","selected"); 
+            }
+        
+        
+        var five = w.indexOf("Araç Kapasitesi");   
+            if(w[five] != undefined){
+		 $("select#vehicleCapacity option[value='"+arry[five]+"']").attr("selected","selected"); 
+            }
+        
+        
+        var six = w.indexOf("Kapı");   
+            if(w[six] != undefined){
+		$("select#door option[value='"+arry[six]+"']").attr("selected","selected");
+            }
+            
+            
+        var seven = w.indexOf("Güvenlik Personeli");   
+            if(w[seven] != undefined){
+		$('input#guvenlik').prop('checked', true); }
+            
+            
+        var eight = w.indexOf("Engelli otoparkı");   
+            if(w[eight] != undefined){
+		$('input#engelli').prop('checked', true); }
+            
+            
+        var nine = w.indexOf("Asansör");   
+            if(w[nine] != undefined){
+		$('input#asansor').prop('checked', true); }
+            
+            
+        var ten = w.indexOf("Elektrik");   
+            if(w[ten] != undefined){
+		$('input#elektrik').prop('checked', true); }
+        
+            
+        var eleven = w.indexOf("Isıtma");  
+            if(w[eleven] != undefined){
+		$('input#isitma').prop('checked', true); }
+        
+            
+        var twelve = w.indexOf("Aylık Kira");   
+            if(w[twelve] != undefined){
+		$('#aylikKira').val(arry[twelve]);  }
+            
+        
+        var thirteen = w.indexOf("Yıllık Kira");   
+            if(w[thirteen] != undefined){
+        $('#yillikKira').val(arry[thirteen]); }
+            
+            
+        var fourteen = w.indexOf("Güvenlik Kamerası");   
+            if(w[fourteen] != undefined){
+		$('input#kamera').prop('checked', true); }
+        
+        }
+               
+        for (var r = 0; r<arry.length; r++) { 
+		
+		if (r == 3) { preinfo = arry[r]; } else {
+		
+		
+		}
+        }
+		propgeninfo += '</ul>'
+        longdescription += details[17];
+		longdescription += '</p>'
+		$("#nPShortDesc").html(preinfo);
+		$("#t1").html($(propgeninfo).text());
+		$("#nPLongDesc").html($(longdescription).text());
+		$("#t3").html('<script>function initMap() {  var uluru = {lat: '+coordinates[0]+', lng: '+coordinates[1]+'};  var map = new google.maps.Map(document.getElementById("map"), {zoom: 17, center: uluru});  var marker = new google.maps.Marker({position: uluru, map: map}); } </script>   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiBBcAFK3mcRZPcE_rgzN9TKEowrsonXg&callback=initMap"> </script>');		
+		
+		}
+});
+}
+
+
+//Submit Edited Listing
+function saveEditedListing(ha) {
+
+var nPCat = $("#newlistingCategory :selected").val();
+var nPStatus = $("#listingStatus :selected").val();
+var nPTitle = $("input#newProductTitle").val();
+var nPAddress = $("input#newProductAddress").val();
+var nPShortDesc = $("textarea#nPShortDesc").val();
+var nPLongDesc = $("textarea#nPLongDesc").val();
+var listingOwner = $("#listingOwner :selected").val();
+var nPType = $("#nPType :selected").val();
+var door = $("#door :selected").val();
+var vehicleCapacity = $("#vehicleCapacity :selected").val();
+var vehicleSize = $("#vehicleSize :selected").val();
+var asansor = $("#asansor").val();
+var elektrik = $("#elektrik").val();
+var kamera = $("#kamera").val();
+var isitma = $("#isitma").val();
+var guvenlik = $("#guvenlik").val();
+var engelli = $("#engelli").val();
+var aylikKira = $("input#aylikKira").val();
+var yillikKira = $("input#yillikKira").val();
+var userToken = localStorage.token;
+    
+localStorage.setItem('tempApddress', nPAddress);
+localStorage.setItem('tempTitle', nPTitle);
+localStorage.setItem('tempI4', 'Kiralık');
+localStorage.setItem('tempDesc', nPShortDesc);
+localStorage.setItem('tempI11', elektrik);
+    
+var url = "https://www.kiralikotopark.com/index.php/tokenapi/submission/?token="+userToken+"&lang_code=tr&input_address="+nPAddress+"&input_title="+nPTitle+"&input_description="+nPShortDesc+"&input_79="+nPCat+"&input_4=Kiralık&input_17="+nPLongDesc+"&input_54="+listingOwner+"&input_2="+nPType+"&input_106="+door+"&input_108="+vehicleCapacity+"&input_30="+asansor+"&input_3="+vehicleSize+"&input_11="+elektrik+"&input_33="+isitma+"&input_28="+guvenlik+"&input_111="+kamera+"&input_29="+engelli+"&input_37="+aylikKira+"&input_55="+yillikKira+"&property_id="+ha+"";
+    
+    alert(url);
+
+    	$.ajax({
+        type: "post",
+        dataType: "json",
+        crossDomain: true, 
+        cache: false,
+        url: url,
+        async: false,
+        success: function(data){
+            //alert(data.message);
+        if (data.message == '"Please populate all fields!"') {
+            $("p#submitReport").append("<p>Lütfen tüm alanları, eksiksiz doldurunuz</p>");
+            return 0;
+        } else {
+            localStorage.removeItem("newListingId");
+            localStorage.setItem('newListingId', data.estate.id);
+        }
+        if (data.token_available == false) {
+		$("p#submitReport").html("Lütfen önce kullanıcı girişi yapın");
+        } 
+        if (data.success == false) {
+   		$("p#submitReport").append(data.message);        
+        } 
+        else {
+        $(".formSendButton").hide();
+        scroll(0,0);
+        imagePopup.open();
+        }
+		}
+		});
+}
+
+
+
+
 
 //Get browser locale
 console.log(navigator.language);
@@ -1255,7 +1665,9 @@ function success(pos) {
   console.log(`Latitude : ${crd.latitude}`);
   console.log(`Longitude: ${crd.longitude}`);
   console.log(`More or less ${crd.accuracy} meters.`);
-  /*
+  localStorage.setItem('currentlat', `${crd.latitude}`);
+  localStorage.setItem('currentlong', `${crd.longitude}`);
+    /*
   alert('Your current position is:');
   alert(`Latitude : ${crd.latitude}`);
   alert(`Longitude: ${crd.longitude}`);
@@ -1281,30 +1693,65 @@ setTimeout(function(){
 app.preloader.hide();
 }
 
-$("#but_upload").click(function(){
-        
-        var userToken = localStorage.token;
-        var fd = new FormData();
-        var files = $('#file')[0].files[0];
-        fd.append('file',files);
-        var url = "https://www.kiralikotopark.com/index.php/tokenapi/submission/?token="+userToken+"&lang_code=tr&input_address="+nPAddress+"&property_id="+localStorage.getItem("newListingId")+"";
-    
-        $.ajax({
-            url: url,
-            type: 'post',
-            data: fd,
-            crossDomain: true, 
-            async: false,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function(response){
-                if(response != 0){
-                    $("#img").attr("src",response); 
-                    $(".preview img").show(); // Display image element
-                }else{
-                    alert('file not uploaded');
-                }
-            },
-        });
+
+
+
+//Prep the map
+function prepTheMap() {
+  var clat = localStorage.getItem('currentlat');
+  var clon = localStorage.getItem('currentlong');
+
+var mymap = L.map('homemap').setView([clat, clon], 16);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    //attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    attribution :'',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiZjFyYXQiLCJhIjoiY2thMTh1NjB2MWN3NDNmbGliMXFvYXM4NyJ9.0Z4yniB9NEFrdkN_zIkhnA'
+}).addTo(mymap);
+var marker = L.marker([clat, clon]).addTo(mymap);
+
+
+mymap.on('moveend', function() { 
+     console.log(mymap.getBounds());
+});
+
+
+    var greenIcon = L.icon({
+    iconUrl: 'parking.png',
+//    shadowUrl: 'parking-shadow.png',
+
+    iconSize:     [38, 55], // size of the icon
+//    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 54], // point of the icon which will correspond to marker's location
+//    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+    //var url = "https://kiralikotopark.com/index.php/api/json/tr/48/";
+    var url = "https://kiralikotopark.com/mobile-functions.php?action=getLocations";
+	$.ajax({
+        type: "POST",
+        crossDomain: true, 
+        cache: false,
+        draggable: true,
+        url: url,
+        dataType: 'json',
+        async: false,
+        success: function(data){  
+            console.log(data);
+    var vi = data.length;
+    for (i = 0; i < vi; i++) {
+        var gps = data[i].gps;
+        var gpsarr = gps.split(',');
+        //alert(data.results[i].url);
+        //alert(data.results[i].listing.id);
+        if (gpsarr[0] != "") {
+        L.marker([gpsarr[0], gpsarr[1]], {icon: greenIcon}).addTo(mymap)
+        .bindPopup('<a onclick="passProductID('+data[i].id+');">'+data[i].address+'</a>');
+        }
+    }
+        }      
     });
+}
