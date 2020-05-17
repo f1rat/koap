@@ -849,7 +849,6 @@ var userminiavatar;
         cache: false,
         url: url,
         success: function(data){
-            alert("got mini av");
 		if(data.image_user_filename == "") {
 		$("#miniavatardiv").html('<img class="menuavatar" src="../img/default-avatar.png" alt="Profil Fotoğrafı" width="80" height="80">');
         } else {
@@ -1701,7 +1700,7 @@ function prepTheMap() {
   var clat = localStorage.getItem('currentlat');
   var clon = localStorage.getItem('currentlong');
 
-var mymap = L.map('homemap').setView([clat, clon], 16);
+window.mymap = L.map('homemap').setView([clat, clon], 16);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     //attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     attribution :'',
@@ -1715,10 +1714,60 @@ var marker = L.marker([clat, clon]).addTo(mymap);
 
 
 mymap.on('moveend', function() { 
-     console.log(mymap.getBounds());
+     refreshMap();
 });
 
 
+    var boun = mymap.getBounds();
+    var swlat = boun._southWest.lat;
+    var swlong = boun._southWest.lng;
+    var nelat = boun._northEast.lat;
+    var nelong = boun._northEast.lng;
+    
+    
+    
+    var greenIcon = L.icon({
+    iconUrl: 'parking.png',
+//    shadowUrl: 'parking-shadow.png',
+
+    iconSize:     [38, 55], // size of the icon
+//    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 54], // point of the icon which will correspond to marker's location
+//    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+    var url = "https://kiralikotopark.com/mobile-functions.php?action=getLocations&swlat="+swlat+"&swlong="+swlong+"&nelat="+nelat+"&nelong="+nelong;
+	$.ajax({
+        type: "POST",
+        crossDomain: true, 
+        cache: false,
+        draggable: true,
+        url: url,
+        dataType: 'json',
+        async: false,
+        success: function(data){  
+    var vi = data.length;
+    for (i = 0; i < vi; i++) {
+        var gps = data[i].gps;
+        var gpsarr = gps.split(',');
+        //alert(data.results[i].url);
+        //alert(data.results[i].listing.id);
+        if (gpsarr[0] != "") {
+        L.marker([gpsarr[0], gpsarr[1]], {icon: greenIcon}).addTo(mymap)
+        .bindPopup('<a onclick="passProductID('+data[i].id+');">'+data[i].address+'</a>');
+        }
+    }
+        }      
+    });
+}
+
+function refreshMap() {
+    var boun = mymap.getBounds();
+    var swlat = boun._southWest.lat;
+    var swlong = boun._southWest.lng;
+    var nelat = boun._northEast.lat;
+    var nelong = boun._northEast.lng;
+    
     var greenIcon = L.icon({
     iconUrl: 'parking.png',
 //    shadowUrl: 'parking-shadow.png',
@@ -1730,7 +1779,7 @@ mymap.on('moveend', function() {
     popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 });
     //var url = "https://kiralikotopark.com/index.php/api/json/tr/48/";
-    var url = "https://kiralikotopark.com/mobile-functions.php?action=getLocations";
+    var url = "https://kiralikotopark.com/mobile-functions.php?action=getLocations&swlat="+swlat+"&swlong="+swlong+"&nelat="+nelat+"&nelong="+nelong;
 	$.ajax({
         type: "POST",
         crossDomain: true, 
@@ -1740,7 +1789,6 @@ mymap.on('moveend', function() {
         dataType: 'json',
         async: false,
         success: function(data){  
-            console.log(data);
     var vi = data.length;
     for (i = 0; i < vi; i++) {
         var gps = data[i].gps;
